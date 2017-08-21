@@ -1,17 +1,8 @@
 package demo2;
 
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Proxy;
-
 public class RealSubject implements Subject {
     public static RealSubject getInstance() {
         return new RealSubject();
-    }
-
-    public static Subject getProxy(Subject subject) {
-        InvocationHandler handler = new SubjectProxy(subject);
-        return (Subject) Proxy.newProxyInstance(
-                handler.getClass().getClassLoader(), subject.getClass().getInterfaces(), handler);
     }
 
     @Override
